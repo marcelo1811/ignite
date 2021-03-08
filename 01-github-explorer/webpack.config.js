@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
+  devtool: 'eval-source-map',
   entry: path.resolve(__dirname, 'src', 'index.jsx'), // __dirname = diretório onde está o webpack.config.js (arquivo atual)
   output: { // arquivo que vai gerar com o webpack
     path: path.resolve(__dirname, 'dist'),
@@ -10,6 +11,9 @@ module.exports = {
   },
   resolve: { // extensões dos arquivos que serão lidos
     extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public')
   },
   plugins: [
     new HtmlWebpackPlugin({ // não ter que adicionar tag script no index.html
