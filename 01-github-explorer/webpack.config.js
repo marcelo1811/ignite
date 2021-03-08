@@ -28,7 +28,12 @@ module.exports = {
         test: /\.jsx$/, // extensão
         exclude: /node_modules/, // ignorar .jsx de dentro da pasta node_modules
         use: 'babel-loader' // converter usando babel-loader, integração do babel com webpacker
-      }
+      },
+      {
+        test: /\.css$/, // extensão
+        exclude: /node_modules/, // ignorar .jsx de dentro da pasta node_modules
+        use: ['style-loader', 'css-loader'] // converter usando babel-loader, integração do babel com webpacker
+      },
     ]
   }
 }
