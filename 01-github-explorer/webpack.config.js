@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,11 @@ module.exports = {
   resolve: { // extensões dos arquivos que serão lidos
     extensions: ['.js', '.jsx']
   },
+  plugins: [
+    new HtmlWebpackPlugin({ // não ter que adicionar tag script no index.html
+      template: path.resolve(__dirname, 'public', 'index.html')
+    })
+  ],
   module: { // configurações de como a aplicação irá se comportar ao importar cada tipo de arquivo
     rules: [
       {
