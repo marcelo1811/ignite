@@ -7,13 +7,13 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'eval-source-map' : 'source-map',
-  entry: path.resolve(__dirname, 'src', 'index.jsx'), // __dirname = diretório onde está o webpack.config.js (arquivo atual)
+  entry: path.resolve(__dirname, 'src', 'index.tsx'), // __dirname = diretório onde está o webpack.config.js (arquivo atual)
   output: { // arquivo que vai gerar com o webpack
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   resolve: { // extensões dos arquivos que serão lidos
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
@@ -28,7 +28,7 @@ module.exports = {
   module: { // configurações de como a aplicação irá se comportar ao importar cada tipo de arquivo
     rules: [
       {
-        test: /\.jsx$/, // extensão
+        test: /\.(j|t)sx$/, // extensão
         exclude: /node_modules/, // ignorar .jsx de dentro da pasta node_modules
         use: {
           loader: 'babel-loader',
